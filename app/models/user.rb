@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :articles, dependent: :destroy
+  has_many :favorites
+  # user.faves returns favorite articles
+  has_many :faves, through: :favorites, source: :article
 end

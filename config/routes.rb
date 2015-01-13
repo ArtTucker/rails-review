@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   get 'users/index'
 
   devise_for :users
-  resources :articles#, only: [:new, :create, :destroy]
-  resources :users, only: :index
+  resources :users, only: :index do
+    resources :articles
+  end
   get 'welcome/index'# => 'welcome#index'
 
   root 'welcome#index'
